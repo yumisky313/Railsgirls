@@ -1,0 +1,15 @@
+<h1>
+	<%= @post.author %>
+</h1>
+
+<hr>
+
+<p>
+	<%= @post.content %>
+</p>
+
+<br>
+
+<%= @post.picture %>
+
+<%= link_to "edit", edit_post_path(@post) %> | <%= link_to "back to list", posts_path %>
