@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603140500) do
+ActiveRecord::Schema.define(version: 20140624120443) do
+
+  create_table "boards", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ideas", force: true do |t|
     t.string   "name"
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140603140500) do
     t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "board_id"
   end
 
   create_table "users", force: true do |t|
