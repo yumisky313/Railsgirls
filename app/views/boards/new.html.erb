@@ -1,0 +1,5 @@
+<%= form_for @board do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+<%= f.submit "save" %>
+<% end %>
+<%= link_to "cancel", boards_path %>

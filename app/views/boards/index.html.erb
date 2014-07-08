@@ -7,7 +7,10 @@
 <% @boards.each do |board| %>
 	<tr>
 		<td><%= link_to board.title, board_path(board) %></td>
+		<td><%= link_to "Delete", board_path(board), :method => :delete, :data => {:confirm => "Are you sure?"} %></td>
 	</tr>
 <% end %>
 	
 </table>
+
+<%= link_to "New", new_board_path %>

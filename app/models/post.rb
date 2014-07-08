@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 	private
 
 	def content_name_classify
-		if content.first != author.first.upcase
+		if content.first != content.first.upcase
 			errors[:content] << "字首要大寫"
 	  end
 	end

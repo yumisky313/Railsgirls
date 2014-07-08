@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 #before_action :get_post, :only => [:show, :edit, :update, :destroy ]
 
 	def index
-		@posts = Post.all
+		@board = Board.find(params[:board_id])
 		redirect_to board_path(@board)
 	end
 
@@ -12,26 +12,30 @@ class PostsController < ApplicationController
 	end
 
 	def new
-		@post = Post.new
+		@board = Board.find(params[:board_id])
+		@post = Board.posts.build
 	end
 
 	def edit
-		@post = Post.find(params[:id])
+		@board = Board.find(params[:board_id])
+		@post = @board.posts.find(params[:id])
 	end
 
 	def create
-	  @post = Post.new(posts_params)
+		@board = Board.find(params[:board_id])
+	  @post = @board.posts.build(posts_params)
 	  if @post.save
-	  	redirect_to @post
+	  	redirect_to board_posts_path(@board)
 	  else
 	  	render :action => :new
 	  end
 	end
 
 	def update
-		@post = Post.find(params[:id])
+		@board = Board.find(params[:board_id])
+		@post = @board.posts.find(params[:id])
 		if @post.update(posts_params)
-			redirect_to @post
+			redirect_to board_posts_path(@board, @post)
 		else
 			render :action => :edit
 		end
